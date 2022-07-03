@@ -27,7 +27,7 @@ export const Success = ({ articles }: CellSuccessProps<ArticlesQuery>) => {
   return (
     <ul>
       {articles.map((article) => (
-        <Article key={article.id} article={article} />
+        <Article article={article} key={article.id} summary={true} />
       ))}
     </ul>
   )
