@@ -1,8 +1,10 @@
 import type { QueryResolvers, CommentResolvers } from 'types/graphql'
 
+import { requireAuth } from 'src/lib/auth'
 import { db } from 'src/lib/db'
 
 export const deleteComment: QueryResolvers['comment'] = ({ id }) => {
+  requireAuth({ roles: 'moderator' })
   return db.comment.delete({
     where: { id },
   })
